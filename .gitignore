@@ -1,0 +1,11 @@
+.project
+.classpath
+.settings
+.vlt
+vlt
+
+*.class
+*.jar
+*.war
+target/
+

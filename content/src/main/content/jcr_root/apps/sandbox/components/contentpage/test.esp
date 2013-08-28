@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<%    
+    // SLING-1540 - currentNode might not be present
+    if(typeof(currentNode) == 'undefined') {
+        currentNode = null;
+    }    
+
+   var result = null;
+   if(currentNode) {
+       var queryManager = currentNode.getSession().getWorkspace().getQueryManager();  
+var query = queryManager.createQuery("/jcr:root/content/sandbox-home/en/*", "xpath");
+       result = query.execute().getNodes();
+   }
+
+   var langs = queryManager.getSupportedQueryLanguages();
+   var langStr = "";
+
+	for (var i=0,n=langs.length; i<n; i++) {
+		langStr = langs[i] + " ";
+	}
+
+%>
+
+<rss version="2.0">
+   <channel>
+      <title>My Sling Blog [<%= java.lang.System.getProperty("java.version") %>]</title>
+      <link><%=request.getRequestURL()%></link>
+      <description>RSS 2.0 feed of my Sling blog (<%= currentNode %>) <%= query %></description>
+
+
+      <%
+        df = new java.text.SimpleDateFormat( "EEE', 'dd' 'MMM' 'yyyy' 'HH:mm:ss' 'Z", Packages.java.util.Locale.US);
+        var counter = 0;
+        while(result && result.hasNext() && counter < 10) {
+            counter++;
+            post = result.nextNode()
+      %>
+
+      <item>
+         <title><%=post%></title>
+         <link>http://<%=request.getServerName()%>:<%=request.getServerPort()%><%=post%>.html</link>
+         <description><%=post["jcr:created"]%> --- </description>
+         <pubDate><%=df.format(post["jcr:created"].getTime())%></pubDate>
+      </item>
+
+      <%
+      }
+      %>
+
+   </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Custom Vault Properties</comment>
+<entry key="createdBy">admin</entry>
+<entry key="name">livesite-content</entry>
+<entry key="lastModified">2013-08-16T23:01:08.436-07:00</entry>
+<entry key="lastModifiedBy">admin</entry>
+<entry key="requiresRestart">false</entry>
+<entry key="created">2013-08-16T23:01:08.531-07:00</entry>
+<entry key="buildCount">2</entry>
+<entry key="version">1.0-SNAPSHOT</entry>
+<entry key="dependencies"/>
+<entry key="requiresRoot">false</entry>
+<entry key="packageFormatVersion">2</entry>
+<entry key="lastWrapped">2013-08-16T23:01:08.436-07:00</entry>
+<entry key="group">GlobalBin</entry>
+<entry key="description">Maven Multimodule project for CMS Sandbox.</entry>
+<entry key="lastWrappedBy">admin</entry>
+</properties>
